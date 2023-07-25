@@ -1,0 +1,63 @@
+* {
+    background-color:aqua;
+    margin: 10px;
+    }
+.quizintro {
+    border: 1rem solid;
+
+}
+
+.pageheader {
+    color: black;
+    text-align: center;
+    margin-top: 200px;
+}
+
+
+.buttonwrapper {
+    text-align: center;
+}
+button {
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: none;
+}
+
+.mainpage {
+    display:none;
+}
+
+
+.highscorecontainer {
+   color: purple;
+}
+
+ 
+.maincardcontainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+.questioncard {
+    font-size: 20px;
+    align-content: flex-start;
+    flex-wrap:wrap;
+}
+
+.questiontext {
+    flex-direction: column;
+    color: black;
+
+}
+
+.answerscard {
+    color: white;
+}
+
+.next {
+    display: none;
+}
+
