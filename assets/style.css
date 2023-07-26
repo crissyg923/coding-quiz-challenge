@@ -55,3 +55,15 @@
  #rightorwrong {
     display:none;
  }
+
+ #next-btn{
+    background: orange;
+    display: none;
+ }
+
+ .inputField {
+    background: white;
+    color: black;
+    width: 75%;
+    font-size: 30px;
+ }
