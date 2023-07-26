@@ -5,14 +5,24 @@
     box-sizing: border-box;
     }
 
+/* Color variables */
+:root {
+        --teal: rgb(203, 223, 242);
+        --darkteal: rgb(49, 103, 103);
+        --borderhue: rgb(27, 202, 199);
+    }
+
+
 body {
-        background: rgb(203, 223, 242);
+        background: var(--teal);
         display: flex;
+        /* flex-direction: column; */
         justify-content: center;
         margin-top: 100px;
     }
+/* Intro page that appears before test */
     .intropage{
-        border: solid 3px rgb(49, 103, 103);
+        border: solid 3px var(--darkteal);
         text-align: center;
         margin: 75px;
         padding: 20px;
@@ -25,23 +35,30 @@ body {
     .intropage p {
         font-size: 25px;
     }
-
+/* Button to start quiz */
     #startbutton {
         width: 20%;
-        color: rgb(49, 103, 103);
+        color: var(--darkteal);
         font-size: 30px;
         margin: 15px;
     }
+/* Running timer to display during quiz */
 .timer{
     display:none;
+    float:right;
+    margin-bottom: 20px;
+    border: solid var(--borderhue);
 }
+/* Wrapper that hides quiz questions until start quiz is clicked */
 .quizstart{
     display: none;
 }   
+/*Class that controls the quiz title/question card styling */
 .beginning {
-    background: greenyellow;
-    width: 80%;
-    border-radius: 10px;
+    background: #fff;
+    width: 900px;
+    margin: auto;
+    border: solid 5px var(--borderhue);
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -51,7 +68,7 @@ body {
 }
 .beginning h1{
     font-size: 65px;
-    color: teal;
+    color: var(--darkteal);
     text-align: center;
 }
 .quizpage {
@@ -62,31 +79,39 @@ body {
 
 }
 
+}
+/* Question */
 .quizpage h2 {
     font-size: 40px;
     color: black;
     text-align: center;
 }
 
+/* Answer buttons list */
+#answer-options {
+    margin-top: 15px;
+}
+
+/* Individual Answer Buttons */
 .btn {
     width: 100%;
-    background: yellow;
+    background: var(--borderhue);
     border: 2px solid;
     border-radius: 5px;
 }
+
+/* Hover style for answer buttons */
 .btn:hover {
-    color: teal;
+    color: white;
     border: 9px;
-    background: gray;
+    background: var(--teal);
 }
+
+/* Message that displays if answer was right or wrong */
  #rightorwrong {
     display:none;
  }
 
- #next-btn{
-    background: orange;
-    display: none;
- }
 
  .inputField {
     background: white;
@@ -98,4 +123,13 @@ body {
  .sendbutton{
     width: 20% ;
     font-size: 30px;
+ }
+.highscorecontainer {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+ #highscorenames {
+    flex-direction:column;
+    
  }

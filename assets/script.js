@@ -35,6 +35,9 @@ const questionEl = document.getElementById("question");
 const answerButton = document.getElementById("answer-options");
 const answerPrompt = document.getElementById("rightorwrong");
 const timerEl = document.querySelector(".timer");
+var quizStart = document.querySelector(".quizstart");
+var startButton = document.getElementById("startbutton");
+var introPage = document.querySelector(".intropage");
 
 //Setting initial scores and indices
 let questionIndex = 0;
@@ -57,8 +60,16 @@ function setTime() {
  }
 //Function to intitiate quiz
 function startQuiz() {
+//Sets question index to 0
  questionIndex = 0;
+ //Hides intro page using JQUERY
+ $(introPage).hide();
+ //Calls timer function to start timer
 setTime();
+// Displays timer
+$(timerEl).show();
+
+$(quizStart).show();
  showQuestion()  
 }
 
@@ -66,9 +77,10 @@ setTime();
 function showQuestion() {
    //Resets previous question and answers
    resetSettings();
-   let currentQuestion = questions[questionIndex];
-   let questionNo = questionIndex + 1;
-   questionEl.innerHTML = questionNo + "." + currentQuestion.question;
+   // Current question in a variable
+   var currentQuestion = questions[questionIndex];
+   
+   questionEl.textContent = currentQuestion.question;
    
 //Creates button to add answers to
 currentQuestion.answers.forEach(answer => {
@@ -118,6 +130,9 @@ function selectAnswer(event){
    setTimeout(nextQuestion, 500); 
 }
 //Resets question element and displays score
+function appendHighScores{
+   
+}
 function showScore(){
    resetSettings();
    clearInterval();
@@ -134,16 +149,20 @@ function showScore(){
 
    answerButton.appendChild(sendHighScores);
 
-}
+ answerButton.addEventListener("click", appendHighScores);
+   }
+
+
 function nextQuestion(){
    questionIndex++;
    if(questionIndex < questions.length){
       showQuestion();
    } else {
+      clearInterval();
       showScore();
    }
 }
 
 
 
-startQuiz();
+startButton.addEventListener("click",startQuiz);
