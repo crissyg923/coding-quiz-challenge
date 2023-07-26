@@ -38,6 +38,7 @@ const timerEl = document.querySelector(".timer");
 var quizStart = document.querySelector(".quizstart");
 var startButton = document.getElementById("startbutton");
 var introPage = document.querySelector(".intropage");
+var highScoreNames = document.querySelector(".highscorenames");
 
 //Setting initial scores and indices
 let questionIndex = 0;
@@ -58,6 +59,7 @@ function setTime() {
  
    }, 1000);
  }
+
 //Function to intitiate quiz
 function startQuiz() {
 //Sets question index to 0
@@ -114,7 +116,7 @@ function resetSettings(){
 
    // }
 }
-//Displays answer is correct or incorrecr and goes to next question
+//Displays answer is correct or incorrect and goes to next question
 function selectAnswer(event){
     selectedBtn = event.target;
    const isCorrect = selectedBtn.dataset.correct === "true";
@@ -130,9 +132,7 @@ function selectAnswer(event){
    setTimeout(nextQuestion, 500); 
 }
 //Resets question element and displays score
-function appendHighScores{
-   
-}
+
 function showScore(){
    resetSettings();
    clearInterval();
@@ -149,10 +149,17 @@ function showScore(){
 
    answerButton.appendChild(sendHighScores);
 
- answerButton.addEventListener("click", appendHighScores);
+   
+   sendHighScores.addEventListener("click", appendHighScores);
    }
 
-
+   function appendHighScores(){
+      var highScores = document.createElement("h3");
+      highScores.classList.add("names");
+      highScores.textContent = timeLeft;
+      highScoreNames.appendChild(highScores);
+   
+   }
 function nextQuestion(){
    questionIndex++;
    if(questionIndex < questions.length){

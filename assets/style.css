@@ -79,7 +79,7 @@ body {
 
 }
 
-}
+
 /* Question */
 .quizpage h2 {
     font-size: 40px;
@@ -129,7 +129,10 @@ body {
     flex-direction: column;
     float: left;
 }
- #highscorenames {
+ .highscorenames {
     flex-direction:column;
     
+ }
+ .names {
+    font-style: italic;
  }
