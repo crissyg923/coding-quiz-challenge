@@ -1,63 +1,57 @@
 * {
-    background-color:aqua;
-    margin: 10px;
+    margin: 0;
+    padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
     }
-.quizintro {
-    border: 1rem solid;
 
-}
-
-.pageheader {
-    color: black;
-    text-align: center;
-    margin-top: 200px;
-}
-
-
-.buttonwrapper {
-    text-align: center;
-}
-button {
-    background-color: aliceblue;
+    body {
+        background: blueviolet;
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+    }
+.beginning {
+    background: greenyellow;
+    width: 80%;
     border-radius: 10px;
-    border: none;
-}
-
-.mainpage {
-    display:none;
-}
-
-
-.highscorecontainer {
-   color: purple;
-}
-
- 
-.maincardcontainer{
+    padding: 40px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.beginning h1{
+    font-size: 65px;
+    color: teal;
+    text-align: center;
+}
+.quizpage {
+    background: #fff;
+    width: 80%;
+    border-radius: 10px;
+    
+
 }
 
-
-
-
-.questioncard {
-    font-size: 20px;
-    align-content: flex-start;
-    flex-wrap:wrap;
-}
-
-.questiontext {
-    flex-direction: column;
+.quizpage h2 {
+    font-size: 40px;
     color: black;
-
+    text-align: center;
 }
 
-.answerscard {
-    color: white;
+.btn {
+    width: 100%;
+    background: yellow;
+    border: 2px solid;
+    border-radius: 5px;
 }
-
-.next {
-    display: none;
+.btn:hover {
+    color: teal;
+    border: 9px;
+    background: gray;
 }
-
+ #rightorwrong {
+    display:none;
+ }

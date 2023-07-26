@@ -9,56 +9,19 @@
 
 <body>
 
-<header class="quizintro">
-    <div>
-    <h3 class="pageheader">
-    Welcome to Coding University! Press the button below to start the quiz.
-    Your score is determined by the amount of time left.  The more time you 
-    have left, the higher the score.  Good Luck!"
-    </h3>
+<div class = "beginning">
+    <h1>Coding Quiz</h1>
+    <div class = "quizpage">
+        <h2 id="question">Question</h2>
+        <div id="answer-options">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>  
+        </div>
+        <h3 id="rightorwrong">Answer Right or Wrong </h3> 
     </div>
-
-    <div class = "buttonwrapper">
-        <button class = "button" type="submit">Click to Start Quiz 😺</button>
-    </div>
-</header>
-
-<main>
-
-    <section class="highscorecontainer">
-            <div class = "highscores">
-            <h2></h2>
-            </div>
-            <div>
-                <ul class="highscorelist">
-                    
-
-                </ul>
-            </div>
-    </section>
-
-
-
-    <section class ="maincardcontiner">
-
-            <div class="questioncard">
-                <h2 class="questiontext"></h2>
-            </div>
-
-            <div class="answerscard">
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
-
-            <h3 class="rightorwrong"></h3>
-            
-    </section>
-</section> 
-
-     
-</main>
+</div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="assets/script.js"></script>
 </body>

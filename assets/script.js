@@ -9,20 +9,24 @@ var answerList = document.querySelector(".answers");
 
 var rightOrWrong = document.querySelector(".rightorwrong");
 
-var questionsArray= ["Which of these is a coding language?", 
-                    "How are you?", 
-                    "What is your name?"];
-var answersOneArray = ["HTML", 
-                        "JavaScript", 
-                        "CSS", 
-                        "All of the above"];
+var questionsAnswers= [
+   {question1: "Which of these is a coding language?", 
+   possibleAnswers: ["HTML"==false, "Javascript"==true, "CSS"==false, "All of the Above"==false]
+},
+
+{question2: "What is your name?",
+possibleAnswers: ["hoo"==true, "moo"==false, "floo"==false, "shoo"==false]
+},
+
+];
+
 
 
 
 var startQuiz = function() {
    questionEl.textContent = questionsArray[0];
    
-   for(var i=0; i < answersOneArray.length; i++) {
+   for(var i=0; i < questionsAnswers.length; i++) {
     answerList.textContent += answersOneArray[i];
     console.log(answersOneArray[i]);
    }
