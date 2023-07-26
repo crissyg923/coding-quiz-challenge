@@ -1,5 +1,5 @@
 //Question & Answer Object
-const questions = [
+var questions = [
    {question: "Which of these is a coding language?", 
    answers: [
       {text: "HTML", correct: false},
@@ -33,7 +33,6 @@ const questions = [
 //Variables created for HTML elements
 const questionEl = document.getElementById("question");
 const answerButton = document.getElementById("answer-options");
-const nextButton = document.getElementById("next-btn");
 const answerPrompt = document.getElementById("rightorwrong");
 const timerEl = document.querySelector(".timer");
 
@@ -60,14 +59,13 @@ function setTime() {
 function startQuiz() {
  questionIndex = 0;
 setTime();
- nextButton.innerHTML = "Next";
  showQuestion()  
 }
 
 //Function to show questions in the question index
 function showQuestion() {
    //Resets previous question and answers
-   resetState();
+   resetSettings();
    let currentQuestion = questions[questionIndex];
    let questionNo = questionIndex + 1;
    questionEl.innerHTML = questionNo + "." + currentQuestion.question;
@@ -86,7 +84,7 @@ currentQuestion.answers.forEach(answer => {
  button.addEventListener("click", selectAnswer);
 });
 }
-function resetState(){
+function resetSettings(){
    answerPrompt.style.display = "none";
    console.log(answerButton.children)
   while(answerButton.firstChild){
@@ -121,15 +119,20 @@ function selectAnswer(event){
 }
 //Resets question element and displays score
 function showScore(){
-   resetState();
+   resetSettings();
    clearInterval();
    if (timeLeft<0) {
       timeLeft=0;}
-   questionEl.innerHTML = "You scored " + timeLeft + "! Save your high score by entering your name below!";
+   questionEl.textContent = "You scored " + timeLeft + "! Save your high score by entering your name below!";
    const highScoreInput = document.createElement("input");
    highScoreInput.classList.add("inputField");
 
    answerButton.appendChild(highScoreInput);
+   const sendHighScores = document.createElement("button");
+   sendHighScores.classList.add("sendbutton");
+   sendHighScores.textContent = "Send!";
+
+   answerButton.appendChild(sendHighScores);
 
 }
 function nextQuestion(){

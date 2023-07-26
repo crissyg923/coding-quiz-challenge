@@ -5,12 +5,39 @@
     box-sizing: border-box;
     }
 
-    body {
-        background: blueviolet;
+body {
+        background: rgb(203, 223, 242);
         display: flex;
         justify-content: center;
         margin-top: 100px;
     }
+    .intropage{
+        border: solid 3px rgb(49, 103, 103);
+        text-align: center;
+        margin: 75px;
+        padding: 20px;
+        width: 100vh;
+        
+    }
+    .intropage h1 {
+        padding: 10px;
+    }
+    .intropage p {
+        font-size: 25px;
+    }
+
+    #startbutton {
+        width: 20%;
+        color: rgb(49, 103, 103);
+        font-size: 30px;
+        margin: 15px;
+    }
+.timer{
+    display:none;
+}
+.quizstart{
+    display: none;
+}   
 .beginning {
     background: greenyellow;
     width: 80%;
@@ -65,5 +92,10 @@
     background: white;
     color: black;
     width: 75%;
+    font-size: 30px;
+ }
+ 
+ .sendbutton{
+    width: 20% ;
     font-size: 30px;
  }
