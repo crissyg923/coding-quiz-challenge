@@ -25,16 +25,25 @@ var questions = [
       {text: "parseInt", correct: false},
       {text: "setInterval()", correct: true},
    ]
+},
+
+{question: "How can I access the value of an ID established on the DOM?", 
+   answers: [
+      {text: "document.want", correct: false},
+      {text: "innerHTML", correct: false},
+      {text: "document.getElementByID", correct: true},
+      {text: "function()", correct: false},
+   ]
 }
 
 
 ];
 
 //Variables created for HTML elements
-const questionEl = document.getElementById("question");
-const answerButton = document.getElementById("answer-options");
-const answerPrompt = document.getElementById("rightorwrong");
-const timerEl = document.querySelector(".timer");
+var questionEl = document.getElementById("question");
+var answerButton = document.getElementById("answer-options");
+var answerPrompt = document.getElementById("rightorwrong");
+var timerEl = document.querySelector(".timer");
 var quizStart = document.querySelector(".quizstart");
 var startButton = document.getElementById("startbutton");
 var introPage = document.querySelector(".intropage");
@@ -44,17 +53,22 @@ var highScoreNames = document.querySelector(".highscorenames");
 let questionIndex = 0;
 let timeLeft = 75;
 
+
 function setTime() {
    // Sets interval in variable
    var timerInterval = setInterval(function() {
      timeLeft--;
      timerEl.textContent = timeLeft;
- 
+
      if(timeLeft === 0) {
        // Stops execution of action at set interval
        clearInterval(timerInterval);
-       // Calls function to create and append image
-       
+       timerEl.textContent= " ";
+
+    //Stops the timer upon quiz completion   
+     } 
+     else if (questionIndex >=4) {
+      clearInterval(timerInterval);
      }
  
    }, 1000);
@@ -98,6 +112,8 @@ currentQuestion.answers.forEach(answer => {
  button.addEventListener("click", selectAnswer);
 });
 }
+//Ensures that message prompt only shows after answering a question
+//and deletes children of answerButton in HTML file
 function resetSettings(){
    answerPrompt.style.display = "none";
    console.log(answerButton.children)
@@ -107,14 +123,7 @@ function resetSettings(){
    } 
    console.log(answerButton.children )
    console.log(answerButton.children.length); 
-   // //for (var i = 0; i<answerButton.children.length; i+=1) { 
-   //  //  console.log(answerButton.children[i]);
-   //   answerButton.removeChild(answerButton.children[0]);
-   //   answerButton.removeChild(answerButton.children[1]);
-   //   answerButton.removeChild(answerButton.children[2]);
-   //   answerButton.removeChild(answerButton.children[3]);
-
-   // }
+  
 }
 //Displays answer is correct or incorrect and goes to next question
 function selectAnswer(event){
@@ -136,11 +145,13 @@ function selectAnswer(event){
 function showScore(){
    resetSettings();
    clearInterval();
+
    if (timeLeft<0) {
       timeLeft=0;}
    questionEl.textContent = "You scored " + timeLeft + "! Save your high score by entering your name below!";
    const highScoreInput = document.createElement("input");
    highScoreInput.classList.add("inputField");
+   
 
    answerButton.appendChild(highScoreInput);
    const sendHighScores = document.createElement("button");
@@ -152,20 +163,21 @@ function showScore(){
    
    sendHighScores.addEventListener("click", appendHighScores);
    }
+//Appends the score to the high score list
 
    function appendHighScores(){
-      var highScores = document.createElement("h3");
-      highScores.classList.add("names");
+      var highScores = document.createElement("li");
+      highScores.classList.add("playername");
       highScores.textContent = timeLeft;
       highScoreNames.appendChild(highScores);
    
    }
+   //Function to go to next question
 function nextQuestion(){
    questionIndex++;
    if(questionIndex < questions.length){
       showQuestion();
    } else {
-      clearInterval();
       showScore();
    }
 }
