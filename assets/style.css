@@ -112,13 +112,6 @@ body {
     display:none;
  }
 
-
- .inputField {
-    background: white;
-    color: black;
-    width: 75%;
-    font-size: 30px;
- }
  
  .sendbutton{
     width: 20% ;

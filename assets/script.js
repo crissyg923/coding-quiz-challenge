@@ -48,6 +48,7 @@ var quizStart = document.querySelector(".quizstart");
 var startButton = document.getElementById("startbutton");
 var introPage = document.querySelector(".intropage");
 var highScoreNames = document.querySelector(".highscorenames");
+var initials = document.querySelector(".initials");
 
 //Setting initial scores and indices
 let questionIndex = 0;
@@ -73,9 +74,19 @@ function setTime() {
  
    }, 1000);
  }
+ function init() {
+   // Get stored todos from localStorage
+   var storedTodos = JSON.parse(localStorage.getItem("highScoreNames"));
+ 
+   // If todos were retrieved from localStorage, update the todos array to it
+   if (storedTodos !== null) {
+     highScoreNames = highScoresList;
+   }
+ }
 
 //Function to intitiate quiz
 function startQuiz() {
+  init();
 //Sets question index to 0
  questionIndex = 0;
  //Hides intro page using JQUERY
@@ -86,6 +97,7 @@ setTime();
 $(timerEl).show();
 
 $(quizStart).show();
+   
  showQuestion()  
 }
 
@@ -148,12 +160,12 @@ function showScore(){
 
    if (timeLeft<0) {
       timeLeft=0;}
-   questionEl.textContent = "You scored " + timeLeft + "! Save your high score by entering your name below!";
-   const highScoreInput = document.createElement("input");
-   highScoreInput.classList.add("inputField");
+   questionEl.textContent = "You scored " + timeLeft + "! Save your high score by pressing the button below.";
+   // const highScoreInput = document.createElement("input");
+   // highScoreInput.classList.add("inputField");
    
 
-   answerButton.appendChild(highScoreInput);
+   // answerButton.appendChild(highScoreInput);
    const sendHighScores = document.createElement("button");
    sendHighScores.classList.add("sendbutton");
    sendHighScores.textContent = "Send!";
@@ -164,15 +176,41 @@ function showScore(){
    sendHighScores.addEventListener("click", appendHighScores);
    }
 //Appends the score to the high score list
+var highScoresList= [ ];
 
-   function appendHighScores(){
-      var highScores = document.createElement("li");
-      highScores.classList.add("playername");
-      highScores.textContent = timeLeft;
-      highScoreNames.appendChild(highScores);
+function appendHighScores(){
+      highScoreNames.innerHTML = "";
    
+// for (var i=0; i<= highScoreNames; i++ ){
+   highscoreinput = prompt("Please enter your initials for high score");
+      var names = document.createElement("li");
+      
+      // let text = highscoreinput.value;
+      let finalscore = highscoreinput += timeLeft;
+
+      names.innerHTML = finalscore
+      // names.setAttribute("data-index", i);
+      
+      // highScoreNames.innerHTML = finalscore;
+      highScoreNames.appendChild(names);
+
+      console.log(finalscore);
+   //  highScoresList.push(names)
+   var temp = {
+      Name: highscoreinput,
+      Score: timeLeft
+
    }
-   //Function to go to next question
+   highScoresList.push(temp);
+console.table(highScoreNames);
+      saveLocal();
+}     
+
+function saveLocal(){
+   
+      localStorage.setItem("highscores", JSON.stringify(highScoresList));
+    }
+
 function nextQuestion(){
    questionIndex++;
    if(questionIndex < questions.length){
@@ -183,5 +221,5 @@ function nextQuestion(){
 }
 
 
-
+init();
 startButton.addEventListener("click",startQuiz);
